@@ -3,7 +3,7 @@
 import generateResponse from "@/components/server/gemini";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Bug, Check, Glasses, Loader2 } from "lucide-react";
+import { Bug, Check, Loader2 } from "lucide-react";
 import React, { useState } from "react";
 
 export default function HomePage() {
@@ -11,6 +11,11 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState('');
   const [prompt, setPrompt] = useState('');
+
+  function handleClear() {
+    setResponse("");
+    setPrompt("");
+  }
 
   async function handleSubmit(e: React.SubmitEvent) {
     e.preventDefault();
@@ -35,15 +40,19 @@ export default function HomePage() {
 
         <div className="p-2 w-[450px] flex flex-col">
           <form onSubmit={handleSubmit} className="mb-6">
-              <Textarea onChange={(e) => setPrompt(e.target.value)} placeholder="Drop your code here!" required/>
+              <Textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Drop your code here!" required/>
               <Button
-                className="mt-2 w-full bg-blue-600 hover:bg-blue-500"
+                className="mt-2 mb-2 w-full bg-blue-600 hover:bg-blue-500"
                 type="submit"
               >
                 
                 {(loading) ?  <Loader2 className="animate-spin"/>: "Analyse Now"}
               </Button>
           </form>
+
+          <Button onClick={() => handleClear()} variant={'destructive'} className="w-full">
+            Clear fields
+          </Button>
         </div>
 
         <div className="flex mb-2 text-gray-500">
