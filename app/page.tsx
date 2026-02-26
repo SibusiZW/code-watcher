@@ -38,7 +38,9 @@ export default function HomePage() {
         </div>
 
         <div className="p-2 flex flex-col w-[450px]">
-          <Textarea readOnly/>
+          <div className="w-full h-[400px] p-6 bg-white border border-zinc-200 rounded-2xl shadow-sm overflow-y-auto relative">
+            <span>{response}</span>
+          </div>
         </div>
     </div>
   )
