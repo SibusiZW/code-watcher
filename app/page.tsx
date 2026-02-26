@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Bug, Check, Glasses } from "lucide-react";
+import { Bug, Check, Glasses, Loader2 } from "lucide-react";
 import { useState } from "react";
 
 export default function HomePage() {
@@ -26,8 +26,8 @@ export default function HomePage() {
                 className="mt-2 w-full bg-blue-600 hover:bg-blue-500"
                 type="submit"
               >
-                <Glasses />
-                Analyse Now
+                
+                {(loading) ?  <Loader2 className="animate-spin"/>: "Analyse Now"}
               </Button>
           </form>
         </div>
