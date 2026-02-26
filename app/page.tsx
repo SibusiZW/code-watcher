@@ -3,8 +3,14 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Bug, Check, Glasses } from "lucide-react";
+import { useState } from "react";
 
 export default function HomePage() {
+
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState('');
+  const [prompt, setPrompt] = useState('');
+
   return (
     <div className="min-h-space-y-8 flex flex-col items-center justify-center p-4">
         {/* User Input */}
