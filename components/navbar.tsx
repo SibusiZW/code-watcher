@@ -1,11 +1,18 @@
-import { Code, Code2 } from "lucide-react";
+import { Code2 } from "lucide-react";
 
 export default function NavBar() {
     return (
-        <header className="p-4 bg-[#dddddd]">
-            <div className="w-10 h-10 text-white rounded-lg bg-blue-500 flex items-center justify-center">
-                <Code2 size={30}/>
+      <header className="sticky top-0 z-10 bg-white/80 backdrop-blur-md border-b border-zinc-200">
+        <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center text-white">
+              <Code2 size={30}/>
             </div>
-        </header>
+            <h1 className="text-xl font-semibold tracking-tight">Code Watcher</h1>
+          </div>
+          
+          
+        </div>
+      </header>
     )
 }
