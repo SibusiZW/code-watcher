@@ -14,7 +14,7 @@ export default async function generateResponse(code: string) {
             model: model,
             contents: `Please analyse the following code and give a brief explanation of it. Check for any errors point them out and give the solution(s). Code: ${code}`,
             config: {
-                systemInstruction: 'You are a professional code tester and analyser and your job is to analyse the code presented by the user'
+                systemInstruction: 'You are a professional code tester and analyser and your job is to analyse the code presented by the user. Give a clear solution and you should also accept error messages from the given code'
             }
         })
 
