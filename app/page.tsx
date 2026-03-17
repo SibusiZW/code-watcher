@@ -3,7 +3,7 @@
 import generateResponse from "@/components/server/gemini";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Bug, Check, Loader2 } from "lucide-react";
+import { Bug, Check, Glasses, Loader2, Trash2 } from "lucide-react";
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown"
 
@@ -16,6 +16,20 @@ export default function HomePage() {
   function handleClear() {
     setResponse("");
     setPrompt("");
+  }
+
+  function renderContent() {
+    if (loading) {
+      return <Loader2 className="animate-spin"/>
+
+    } else {
+      return (
+        <>
+         <Glasses />
+         Analyse Now
+        </>
+      )
+    }
   }
 
   async function handleSubmit(e: React.SubmitEvent) {
@@ -39,7 +53,7 @@ export default function HomePage() {
           Paste your buggy code here
         </div>
 
-        <div className="p-2 w-[450px] flex flex-col">
+        <div className="p-2 w-full max-w-[450px] flex flex-col">
           <form onSubmit={handleSubmit} className="mb-6">
               <Textarea value={prompt} onChange={(e) => setPrompt(e.target.value)} placeholder="Drop your code here!" required/>
               <Button
@@ -47,11 +61,12 @@ export default function HomePage() {
                 type="submit"
               >
                 
-                {(loading) ?  <Loader2 className="animate-spin"/>: "Analyse Now"}
+                {renderContent()}
               </Button>
           </form>
 
           <Button onClick={() => handleClear()} variant={'destructive'} className="w-full">
+            <Trash2 />
             Clear fields
           </Button>
         </div>
@@ -61,7 +76,7 @@ export default function HomePage() {
           Your review goes here
         </div>
 
-        <div className="p-2 flex flex-col w-[450px]">
+        <div className="p-2 flex flex-col w-full max-w-[450px]">
           <div className="w-full h-[400px] p-6 bg-white border border-zinc-200 rounded-2xl shadow-sm overflow-y-auto relative">
             <span>
               <ReactMarkdown>{response}</ReactMarkdown>
