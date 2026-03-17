@@ -1,6 +1,6 @@
 'use client';
 
-import generateResponse from "@/components/server/gemini";
+import generateResponse from "@/server/gemini";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Bug, Check, Glasses, Loader2, Trash2 } from "lucide-react";
